@@ -14,7 +14,7 @@
                      (on-event name event)
                      (recur)))))
 
-;Ассоциативный контейнер Публикующий - Подписчики
+;Ассоциативный контейнер Издатель - Подписчики
 (def sp-map (agent {}))
 
 ;Каналы входящих постов
@@ -25,7 +25,7 @@
                    (go
                      (>! posts {:publisher publisher :event event}))))
 
-;Подписаться на Публикующего
+;Подписаться на Издателя
 (def subscribe-to (fn [sub pub] (send sp-map update pub conj sub)))
 
 ;Рассылка события по Подписчикам
